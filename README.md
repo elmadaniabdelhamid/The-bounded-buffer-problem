@@ -127,4 +127,5 @@ The `Produit` class represents a product with a name and a price.
 
 For further assistance, please contact:
 
-- **Email**: abdelhamidelmadani45@gmail.com
+- **Emails**: abdelhamidelmadani45@gmail.com
+boutainaotaku2003@gmail.com
