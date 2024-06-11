@@ -1,76 +1,4 @@
 package JAVA_projects;
-/*
-import java.util.concurrent.BlockingQueue;
-
-public class Producteur {
-    private BlockingQueue<Produit> queue;
-
-    public Producteur(BlockingQueue<Produit> queue) {
-        this.queue = queue;
-    }
-
-    public boolean produitExiste(String name) {
-        for (Produit produit : queue) {
-            if (produit.getName().equals(name)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public void produce(String name, double price) {
-        try {
-            queue.put(new Produit(name, price));
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
-}
-
- */
-// semaphores:
- /*
-import java.util.List;
-import java.util.ArrayList;
-import java.util.concurrent.Semaphore;
-
-public class Producteur {
-    private List<Produit> buffer;
-    private Semaphore availableSpaces;
-    private Semaphore availableItems;
-    private final Object lock = new Object();
-
-    public Producteur(List<Produit> buffer, Semaphore availableSpaces, Semaphore availableItems) {
-        this.buffer = buffer;
-        this.availableSpaces = availableSpaces;
-        this.availableItems = availableItems;
-    }
-
-    public boolean produitExiste(String name) {
-        synchronized (lock) {
-            for (Produit produit : buffer) {
-                if (produit.getName().equals(name)) {
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    public void produce(String name, double price) {
-        try {
-            availableSpaces.acquire();
-            synchronized (lock) {
-                buffer.add(new Produit(name, price));
-            }
-            availableItems.release();
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-    }
-}
-
-  */
 import java.util.List;
 
 public class Producteur {
@@ -83,7 +11,9 @@ public class Producteur {
         this.maxSize = maxSize;
         this.lock = lock;
     }
+
 /*
+if you wanna check if a product is already existe:
     public boolean produitExiste(String name) {
         synchronized (lock) {
             for (Produit produit : queue) {
