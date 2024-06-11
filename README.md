@@ -20,7 +20,6 @@
   - [Produit](#produit)
 - [Troubleshooting](#troubleshooting)
   - [Common Issues](#common-issues)
-- [License](#license)
 - [Contact](#contact)
 
 ## Overview
@@ -123,10 +122,6 @@ The `Produit` class represents a product with a name and a price.
 2. **Buffer Full or Empty**:
    - If the buffer is full, producing a new product will fail, and a message will be displayed.
    - If the buffer is empty, consuming a product will fail, and a message will be displayed.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 
