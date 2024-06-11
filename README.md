@@ -133,7 +133,4 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 For further assistance, please contact:
 
 - **Email**: abdelhamidelmadani45@gmail.com
-- **GitHub Issues**: [GitHub Issues Page]((https://github.com/elmadaniabdelhamid))
-
-
-  
+- **GitHub Issues**: [GitHub Issues Page](https://github.com/elmadaniabdelhamid)
