@@ -9,6 +9,7 @@
   - [Install JDK if u do not have one.](#install-JDK)
   - [Compiling the Project](#compiling-the-project)
   - [Running the Project](#running-the-project)
+  - [Cleaning the project](#cleaning_the_project)
 - [Usage](#usage)
   - [Producing a Product](#producing-a-product)
   - [Consuming a Product](#consuming-a-product)
@@ -76,6 +77,10 @@ This project uses Java's synchronized methods. It features a graphical user inte
 
    ```bash
    make run
+   ```
+### Cleanin the project
+ ```bash
+   make clean
    ```
 
 ## Usage
