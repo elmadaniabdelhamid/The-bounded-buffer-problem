@@ -10,16 +10,6 @@
   - [Compiling the Project](#compiling-the-project)
   - [Running the Project](#running-the-project)
   - [Cleaning the project](#cleaning_the_project)
-- [Usage](#usage)
-  - [Producing a Product](#producing-a-product)
-  - [Consuming a Product](#consuming-a-product)
-  - [Viewing Available Products](#viewing-available-products)
-  - [Exiting the Application](#exiting-the-application)
-- [Classes](classes)
-  - [Main.java](Main.java)
-  - [Producteur.java](Producteur.java)
-  - [Consommateur.java](Consommateur.java)
-  - [Produit.java](Produit.java)
 - [Troubleshooting](#troubleshooting)
   - [Common Issues](#common-issues)
 - [Contact](#contact)
@@ -83,56 +73,13 @@ This project uses Java's synchronized methods. It features a graphical user inte
    make clean
    ```
 
-## Usage
-
-### Producing a Product
-
-1. **Select "Produce"** from the dropdown menu.
-2. **Enter the product name** in the "Product Name" field.
-3. **Enter the product price** in the "Product Price" field.
-4. Click the **"Perform Action"** button.
-5. The log area will display a message indicating the product was produced.
-
-### Consuming a Product
-
-1. **Select "Consume"** from the dropdown menu.
-2. **Enter the product name** in the "Consume Product Name" field.
-3. Click the **"Perform Action"** button.
-4. The log area will display a message indicating whether the product was consumed or  does not exist.
-5. After consumption, the remaining products and their prices will be displayed in the log area.
-
-### Exiting the Application
-
-- Click the **"Exit"** button to close the application.
-
-## Classes
-
-### [Main](src/JAVA_projects/Main.java)
-
-The `Main` class sets up the GUI and handles user interactions.
-
-### [Producteur](src/JAVA_projects/Producteur.java)
-
-The `Producteur` class is responsible for producing products and adding them to the buffer.
-
-### [Consommateur](src/JAVA_projects/Consommateur.java)
-
-The `Consommateur` class is responsible for consuming products from the buffer.
-
-### [Produit](src/JAVA_projects/Produit.java)
-
-The `Produit` class represents a product with a name and a price.
-
 ## Troubleshooting
 
 ### Common Issues
 
-1. **Invalid Price Input**:
-   - Ensure that the price entered is a valid number. If not, the log area will display "Prix invalide".
-
-2. **Buffer Full or Empty**:
-   - If the buffer is full, producing a new product will fail, and a message will be displayed.
-   - If the buffer is empty, consuming a product will fail, and a message will be displayed.
+1. **Buffer Full or Empty**:
+   - If the buffer is full, producing a new data will fail, and a message will be displayed.
+   - If the buffer is empty, consuming a data will fail, and a message will be displayed.
 
 ## Contact
 
