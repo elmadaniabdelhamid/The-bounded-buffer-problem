@@ -33,8 +33,6 @@ public class GuiBlockingQueue {
         JButton removeProducer = new JButton("Remove Producer");
         JButton addConsumer = new JButton("Add Consumer");
         JButton removeConsumer = new JButton("Remove Consumer");
-        JButton updateBufferSize = new JButton("Update Buffer Size");
-
         bufferSizeField = new JTextField(5);
         bufferSizeField.setText(Integer.toString(queue.size()));  // Set initial size
 
@@ -61,19 +59,18 @@ public class GuiBlockingQueue {
                 log("Removed consumer. Total consumers: " + consumerCount.get());
             }
         });
-
+        /*
         updateBufferSize.addActionListener(e -> {
             int newSize = Integer.parseInt(bufferSizeField.getText());
             updateBufferSize(newSize);
         });
+         */
 
         panel.add(addProducer);
         panel.add(removeProducer);
         panel.add(addConsumer);
         panel.add(removeConsumer);
-        panel.add(new JLabel("Buffer Size:"));
         panel.add(bufferSizeField);
-        panel.add(updateBufferSize);
 
         frame.setLayout(new BorderLayout());
         frame.add(new JScrollPane(textArea), BorderLayout.CENTER);
@@ -81,14 +78,14 @@ public class GuiBlockingQueue {
         frame.setVisible(true);
     }
 
-    private void updateBufferSize(int newSize) {
-        BlockingQueue<Integer> newQueue = new LinkedBlockingQueue<>(newSize);
-        queue.drainTo(newQueue);
-        queue = newQueue;
-        log("Buffer size updated to: " + newSize);
-    }
-
     public void log(String message) {
         SwingUtilities.invokeLater(() -> textArea.append(message + "\n"));
+    }
+    public void logBufferFull() {
+        SwingUtilities.invokeLater(() -> textArea.append("Buffer is full\n"));
+    }
+
+    public void logBufferEmpty() {
+        SwingUtilities.invokeLater(() -> textArea.append("Buffer is empty\n"));
     }
 }
