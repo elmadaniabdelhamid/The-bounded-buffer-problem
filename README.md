@@ -23,12 +23,15 @@ This project uses Java's synchronized methods. It features a graphical user inte
 
 ## Features
 
-- **Producers** can add products to the buffer while there is an empty scpace .
-- **Consumers** can consume products from the buffer if they exist.
+- **Producers** can add data to the buffer while there is an empty scpace .
+- **Consumers** can consume data from the buffer if they exist.
 - The GUI allows users to:
-  - Add new products with a name and price.
-  - Consume products by specifying the product name.
-  - View the list of available products after each consumption.
+  - Add new producer.
+  - Add new consumer.
+  - Remove a producer.
+  - Remove a consumer.
+  - Update the buffer size.
+  - View the number of producer and consumer existe.
 
 ## Installation and Setup
 
