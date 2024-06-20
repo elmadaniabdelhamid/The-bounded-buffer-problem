@@ -3,7 +3,7 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class ProducerConsumer {
+public class MainBlockingQueue {
     public static void main(String[] args) {
         int bufferSize = 10;  // Default buffer size
         if (args.length > 0) {
@@ -14,7 +14,7 @@ public class ProducerConsumer {
         AtomicInteger producerCount = new AtomicInteger(0);
         AtomicInteger consumerCount = new AtomicInteger(0);
 
-        ProducerConsumerGUI gui = new ProducerConsumerGUI(queue, producerCount, consumerCount);
+        GuiBlockingQueue gui = new GuiBlockingQueue(queue, producerCount, consumerCount);
 
         Thread producerThread = new Thread(() -> {
             while (true) {
