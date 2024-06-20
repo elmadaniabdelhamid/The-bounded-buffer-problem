@@ -6,6 +6,7 @@
 - [Features](#features)
 - [Installation and Setup](#installation-and-setup)
   - [Cloning the Repository](#cloning-the-repository)
+  - [Install JDK if u do not have one.](#install-JDK)
   - [Compiling the Project](#compiling-the-project)
   - [Running the Project](#running-the-project)
 - [Usage](#usage)
@@ -49,6 +50,11 @@ This project uses Java's synchronized methods. It features a graphical user inte
    git clone https://github.com/yourusername/producer-consumer-java.git
    cd producer-consumer-java
    ```
+### install JDK
+```bash
+   sudo apt update
+   sudo apt install default-jdk
+   ```
 
 ### Compiling the Project
 
@@ -61,7 +67,7 @@ This project uses Java's synchronized methods. It features a graphical user inte
 2. Compile the project:
 
    ```bash
-   javac -d bin src/JAVA_projects/*.java
+   make
    ```
 
 ### Running the Project
@@ -69,7 +75,7 @@ This project uses Java's synchronized methods. It features a graphical user inte
 1. Run the project:
 
    ```bash
-   java -cp bin JAVA_projects.Main
+   make run
    ```
 
 ## Usage
