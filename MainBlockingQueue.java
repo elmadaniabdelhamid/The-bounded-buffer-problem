@@ -5,24 +5,21 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainBlockingQueue {
     public static void main(String[] args) {
-        int bufferSize = 10;  // Default buffer size
-        if (args.length > 0) {
-            bufferSize = Integer.parseInt(args[0]);
-        }
+        final int bufferSize = 10;  // Default buffer size
 
         BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(bufferSize);
         AtomicInteger producerCount = new AtomicInteger(0);
         AtomicInteger consumerCount = new AtomicInteger(0);
 
-        GuiBlockingQueue gui = new GuiBlockingQueue(queue, producerCount, consumerCount);
+        CuiBlockingQueue gui = new CuiBlockingQueue(queue, producerCount, consumerCount);
 
         Thread producerThread = new Thread(() -> {
             while (true) {
                 try {
                     if (producerCount.get() > 0) {
-                        queue.put((int) (Math.random() * 100));
+                        queue.put((int) (Math.random()*100));
                         gui.log("Produced: " + queue.peek());
-                        Thread.sleep(500);  // Simulate work
+                        Thread.sleep(500);
                     }
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
@@ -34,8 +31,8 @@ public class MainBlockingQueue {
             while (true) {
                 try {
                     if (consumerCount.get() > 0) {
-                        int item = queue.take();
-                        gui.log("Consumed: " + item);
+                        //int item = queue.take();
+                        gui.log("Consumed: " +  queue.take());
                         Thread.sleep(500);  // Simulate work
                     }
                 } catch (InterruptedException e) {
