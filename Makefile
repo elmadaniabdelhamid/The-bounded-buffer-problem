@@ -1,29 +1,23 @@
 # Define variables
-SRC_DIR = src
-BIN_DIR = bin
+SRC_DIR = The-bounded-buffer-problem 
+SRC_FILES = $(wildcard *.java)
+CLASS_FILES = $(SRC_FILES:.java=.class)
 MAIN_CLASS = MainBlockingQueue
 
-# Find all .java files in the SRC_DIR
-SOURCES = $(wildcard $(SRC_DIR)/*.java)
-
-# Convert .java file paths in SRC_DIR to .class file paths in BIN_DIR
-CLASSES = $(SOURCES:$(SRC_DIR)/%.java=$(BIN_DIR)/%.class)
-
 # Default target
-all: $(CLASSES)
+all: $(CLASS_FILES)
 
-# Rule to compile .java files to .class files
-$(BIN_DIR)/%.class: $(SRC_DIR)/%.java
-	@mkdir -p $(BIN_DIR)
-	javac -d $(BIN_DIR) $<
+# Rule to compile all .java files to .class files
+$(CLASS_FILES): $(SRC_FILES)
+        javac $(SRC_FILES)
 
 # Run the main class
 run: all
-	java -cp $(BIN_DIR) $(MAIN_CLASS)
+        java $(MAIN_CLASS)
 
 # Clean up .class files
 clean:
-	rm -rf $(BIN_DIR)/*.class
+        rm -f *.class
 
 # Phony targets
 .PHONY: all run clean
