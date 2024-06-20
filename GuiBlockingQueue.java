@@ -1,4 +1,4 @@
-package khemal_project;
+package The-bounded-buffer-problem;
 import javax.swing.*;
 import java.awt.*;
 import java.util.concurrent.BlockingQueue;
