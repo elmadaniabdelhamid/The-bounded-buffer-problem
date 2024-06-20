@@ -5,7 +5,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class ProducerConsumerGUI {
+public class GuiBlockingQueue {
     private JFrame frame;
     private JTextArea textArea;
     private BlockingQueue<Integer> queue;
@@ -13,7 +13,7 @@ public class ProducerConsumerGUI {
     private AtomicInteger consumerCount;
     private JTextField bufferSizeField;
 
-    public ProducerConsumerGUI(BlockingQueue<Integer> initialQueue, AtomicInteger producerCount, AtomicInteger consumerCount) {
+    public GuiBlockingQueue(BlockingQueue<Integer> initialQueue, AtomicInteger producerCount, AtomicInteger consumerCount) {
         this.queue = initialQueue;
         this.producerCount = producerCount;
         this.consumerCount = consumerCount;
