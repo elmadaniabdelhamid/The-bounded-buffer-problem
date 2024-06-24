@@ -21,6 +21,6 @@ run: all
 # Clean up .class files
 clean:
         rm -f *.class
-
+        @echo "Done Cleaning."
 # Phony targets
 .PHONY: all run clean
