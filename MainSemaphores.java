@@ -17,34 +17,43 @@ public class MainSemaphores {
 
         GuiSemaphores gui = new GuiSemaphores(buffer, bufferLock, items, spaces, producerCount, consumerCount);
 
-        Thread producerThread = new Thread(() -> {
+        // Producer thread creation logic
+        Runnable producerTask = () -> {
             while (true) {
                 try {
-                    if (producerCount.get() > 0 ) {
+                    if (producerCount.get() > 0) {
                         spaces.acquire();
                         bufferLock.acquire();
                         int item = (int) (Math.random() * 100);
                         buffer.add(item);
-                        gui.log("Produced: " + item);
+                        gui.log("Produced: " + item + " by Producer : " + Thread.currentThread().getId());
+                        if (buffer.size() == bufferSize) {
+                            gui.logBufferFull();
+                        }
                         bufferLock.release();
                         items.release();
                         Thread.sleep(500);  // Simulate work
-
                     }
                 } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
                 }
             }
-        });
+        };
 
-        Thread consumerThread = new Thread(() -> {
+        // Consumer thread creation logic
+        Runnable consumerTask = () -> {
             while (true) {
                 try {
-                    if (consumerCount.get() > 0 && !buffer.isEmpty()) {
+                    if (consumerCount.get() > 0) {
                         items.acquire();
                         bufferLock.acquire();
-                        int item = buffer.remove();
-                        gui.log("Consumed: " + item);
+                        if (!buffer.isEmpty()) {
+                            int item = buffer.remove();
+                            gui.log("Consumed: " + item + " by Consumer : " + Thread.currentThread().getId());
+                        }
+                        if (buffer.isEmpty()) {
+                            gui.logBufferEmpty();
+                        }
                         bufferLock.release();
                         spaces.release();
                         Thread.sleep(500);  // Simulate work
@@ -53,11 +62,10 @@ public class MainSemaphores {
                     Thread.currentThread().interrupt();
                 }
             }
-        });
+        };
 
-        producerThread.start();
-        consumerThread.start();
+        // Initial thread creation for GUI responsiveness
+        gui.setProducerTask(producerTask);
+        gui.setConsumerTask(consumerTask);
     }
 }
-
-
