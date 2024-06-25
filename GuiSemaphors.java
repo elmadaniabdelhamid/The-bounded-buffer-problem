@@ -1,6 +1,5 @@
 import javax.swing.*;
 import java.awt.*;
-import java.util.LinkedList;
 import java.util.Queue;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -14,7 +13,9 @@ public class GuiSemaphores {
     private Semaphore spaces;
     private AtomicInteger producerCount;
     private AtomicInteger consumerCount;
-    private JTextField bufferSizeField;
+
+    private Runnable producerTask;
+    private Runnable consumerTask;
 
     public GuiSemaphores(Queue<Integer> initialBuffer, Semaphore bufferLock, Semaphore items, Semaphore spaces, AtomicInteger producerCount, AtomicInteger consumerCount) {
         this.buffer = initialBuffer;
@@ -42,6 +43,7 @@ public class GuiSemaphores {
 
         addProducer.addActionListener(e -> {
             producerCount.incrementAndGet();
+            new Thread(producerTask).start();
             log("Added producer. Total producers: " + producerCount.get());
         });
 
@@ -54,6 +56,7 @@ public class GuiSemaphores {
 
         addConsumer.addActionListener(e -> {
             consumerCount.incrementAndGet();
+            new Thread(consumerTask).start();
             log("Added consumer. Total consumers: " + consumerCount.get());
         });
 
@@ -64,12 +67,10 @@ public class GuiSemaphores {
             }
         });
 
-
         panel.add(addProducer);
         panel.add(removeProducer);
         panel.add(addConsumer);
         panel.add(removeConsumer);
-
 
         frame.setLayout(new BorderLayout());
         frame.add(new JScrollPane(textArea), BorderLayout.CENTER);
@@ -88,20 +89,11 @@ public class GuiSemaphores {
         SwingUtilities.invokeLater(() -> textArea.append("Buffer is empty\n"));
     }
 
-    public Queue<Integer> getBuffer() {
-        return buffer;
+    public void setProducerTask(Runnable producerTask) {
+        this.producerTask = producerTask;
     }
 
-    public Semaphore getBufferLock() {
-        return bufferLock;
-    }
-
-    public Semaphore getItems() {
-        return items;
-    }
-
-    public Semaphore getSpaces() {
-        return spaces;
+    public void setConsumerTask(Runnable consumerTask) {
+        this.consumerTask = consumerTask;
     }
 }
-
