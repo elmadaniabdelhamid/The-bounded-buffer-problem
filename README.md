@@ -30,7 +30,6 @@ This project uses Java's synchronized methods. It features a graphical user inte
   - Add new consumer.
   - Remove a producer.
   - Remove a consumer.
-  - Update the buffer size.
   - View the number of producer and consumer existe.
 
 ## Installation and Setup
